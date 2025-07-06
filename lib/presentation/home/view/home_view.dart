@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_exemplo_vibracao/presentation/home/view_model/home_view_model.dart';
+import 'package:flutter_exemplo_vibracao/shared/widgets/amplitude_widget.dart';
 import 'package:flutter_exemplo_vibracao/shared/widgets/vibration_button_widget.dart';
 
 class HomeView extends StatefulWidget {
@@ -19,32 +20,28 @@ class _HomeViewState extends State<HomeView> {
       builder: (context, _) {
         return Scaffold(
           body: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Expanded(
-                child: Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      VibrationButton(
-                        text: 'Iniciar Vibração Continua',
-                        isVibrating: vm.isVibrating,
-                        onPressed: vm.startVibration,
-                      ),
-                      VibrationButton(
-                        text: 'Iniciar Vibração Temporizada',
-                        isVibrating: vm.isVibrating,
-                        onPressed: vm.startVibrationTemporized,
-                      ),
-                      VibrationButton(
-                        isStop: true,
-                        text: 'Parar Vibração',
-                        isVibrating: vm.isVibrating,
-                        onPressed: vm.pauseVibration,
-                      ),
-                    ],
-                  ),
-                ),
+              AmplitudeWidget(
+                amplitude: vm.amplitude,
+                onPresseddecrement: vm.decrementAmplitude,
+                onPressedincrement: vm.incrementAmplitude,
+              ),
+              VibrationButton(
+                text: 'Iniciar Vibração Continua',
+                isVibrating: vm.isVibrating,
+                onPressed: vm.startVibration,
+              ),
+              VibrationButton(
+                text: 'Iniciar Vibração Temporizada',
+                isVibrating: vm.isVibrating,
+                onPressed: vm.startVibrationTemporized,
+              ),
+              VibrationButton(
+                isStop: true,
+                text: 'Parar Vibração',
+                isVibrating: vm.isVibrating,
+                onPressed: vm.pauseVibration,
               ),
             ],
           ),

@@ -7,7 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Exemplo Vibracao',
+      title: 'Flutter Exemplo Vibração',
       home: const HomeView(),
     );
   }
